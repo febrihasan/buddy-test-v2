@@ -1,0 +1,8 @@
+server:
+  port: 9090
+
+spring:
+  #profile active
+  #example: using application-dev.yml => active: dev,using application-prod.yml => active: prod
+  profiles:
+    active: dev

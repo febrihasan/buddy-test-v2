@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  #application name
+  application:
+    name: config-service
+
+  #monitor web admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+
+  #connect to database
+  datasource:
+    url: jdbc:postgresql://localhost:5432/buddy_test_v2
+    username: postgres
+    password: postgres
+
+  #flyway migration
+  flyway:
+    enabled: true
+
+  #jpa configure
+  jpa:
+    properties:
+      hibernate-dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+
+#actuator / management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

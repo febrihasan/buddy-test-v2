@@ -1,0 +1,29 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /api
+
+spring:
+  #application name
+  application:
+    name: account-service
+  #monitor web admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+  #connect to database
+  datasource:
+    url: jdbc:postgresql://localhost:5432/buddy_test_v2
+    username: postgres
+    password: postgres
+
+#actuator / management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
