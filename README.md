@@ -1,2 +1,2 @@
-# buddy-test-v2
+# Application
 Buddy Test version 2.0 Microservice
