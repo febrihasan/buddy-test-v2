@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfig {
 
-    /**
+    /**.
     * This method for detail description spring document with swagger ui
     * @return api information for spring document with swagger ui
     */

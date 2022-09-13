@@ -27,3 +27,18 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+    logfile:
+      external-file: logs/customer-service.log
+
+#logbook style: https://github.com/zalando/logbook#configuration
+logbook:
+  format:
+    style: splunk
+
+logging:
+  file:
+    path: logs
+    name: logs/customer-service.log
+  level:
+    #set for logbook write into log
+    org.zalando.logbook: TRACE

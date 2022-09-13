@@ -1,0 +1,70 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /api
+
+spring:
+  #application name
+  application:
+    name: payment-service
+  #monitor web admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+  #connect to database
+  datasource:
+    url: jdbc:postgresql://localhost:5432/buddy_test_v2
+    username: postgres
+    password: postgres
+
+#actuator / management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    logfile:
+      external-file: logs/payment-service.log
+
+restclient:
+  url:
+    payment-client: https://buddy-test.mocklab.io/api
+
+#logbook style: https://github.com/zalando/logbook#configuration
+logbook:
+  format:
+    style: splunk
+
+logging:
+  file:
+    path: logs
+    name: logs/payment-service.log
+  level:
+    #set for openfeign write into log
+    org.ait.project.payment.shared.openfeign: DEBUG
+    #set for logbook write into log
+    org.zalando.logbook: TRACE
+
+feign:
+  #active openfeign fallback set true on circuit breaker and hystrix
+  circuitbreaker:
+    enabled: true
+  hystrix:
+    enabled: true
+  #client openfeign log set
+  client:
+    config:
+      payment-client:
+        loggerLevel: full
+
+#turn off time out hystrix, because for default this config if true set timeout to 15 sec, and openfeign timeout unused
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false

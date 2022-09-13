@@ -17,6 +17,8 @@
         <module>customer</module>
         <module>inventory</module>
         <module>product</module>
+        <module>orders</module>
+        <module>payment</module>
     </modules>
     <!-- [END] Modules -->
 

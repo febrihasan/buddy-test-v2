@@ -1,0 +1,26 @@
+package org.ait.project.orders.modules.order.service.delegate;
+
+import org.ait.project.orders.modules.order.model.entity.Orders;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+public interface OrdersDelegate {
+
+  List<Orders> getAllOrders();
+
+  Page<Orders> getAllOrdersWithPage(Pageable page);
+
+  Orders getOrderById(Long id);
+
+  void updateTotalAmount(BigDecimal totalAmount, Long id);
+
+  List<Orders> saveAll(List<Orders> orders);
+
+  Orders save(Orders order);
+
+  void deleteById(Long id);
+
+}

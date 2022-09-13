@@ -1,0 +1,44 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /api
+
+spring:
+  #application name
+  application:
+    name: orders-service
+  #monitor web admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
+  #connect to database
+  datasource:
+    url: jdbc:postgresql://localhost:5432/buddy_test_v2
+    username: postgres
+    password: postgres
+
+#actuator / management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    logfile:
+      external-file: logs/orders-service.log
+
+#logbook style: https://github.com/zalando/logbook#configuration
+logbook:
+  format:
+    style: splunk
+
+logging:
+  file:
+    path: logs
+    name: logs/orders-service.log
+  level:
+    #set for logbook write into log
+    org.zalando.logbook: TRACE

@@ -1,8 +1,15 @@
 server:
   port: 9090
 
-spring:
-  #profile active
-  #example: using application-dev.yml => active: dev,using application-prod.yml => active: prod
-  profiles:
-    active: dev
+#logbook style: https://github.com/zalando/logbook#configuration
+logbook:
+  format:
+    style: splunk
+
+logging:
+  file:
+    path: logs
+    name: logs/admin-service.log
+  level:
+    #set for logbook write into log
+    org.zalando.logbook: TRACE
